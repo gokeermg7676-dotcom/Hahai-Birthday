@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تولدت مبارک هاهایی</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button class="music-toggle" id="music-toggle" title="پخش / توقف موزیک">🎵</button>
+    <audio id="bg-audio" loop>
+        <source id="audio-source" src="" type="audio/mpeg">
+    </audio>
+
+    <div id="experience-overlay" class="experience-stage">
+        <div id="stage-1" class="stage-content">
+            <p class="stage-text">یه لحظه صبر کن...</p>
+            <p class="stage-text">امروز یه روز معمولی نیست...</p>
+            <div style="font-size: 2rem; color: var(--gold-accent); margin: 20px 0; font-weight: 700;">۳۰ آبان</div>
+            <p class="stage-text">تاریخی که ارزش یه مکث کوچیک رو داره.</p>
+            <button id="next-stage-btn" class="interactive-btn">ادامه</button>
+        </div>
+
+        <div id="stage-2" class="stage-content" style="display: none;">
+            <h1 class="stage-title-glow" id="config-name">هاهایی</h1>
+            <p class="stage-text">تولدت مبارک...</p>
+            <p class="stage-text" style="font-size: 1rem; color: var(--text-muted);">فکر کردی همین بود؟</p>
+            <button onclick="document.getElementById('experience-overlay').classList.add('hidden'); document.getElementById('main-website').classList.add('visible');" class="interactive-btn">ورود به دنیای اصلی</button>
+        </div>
+    </div>
+
+    <div id="main-website" class="main-website">
+        <section class="hero-section">
+            <div class="hero-image-wrapper">
+                <img id="hero-img" src="" alt="هاهایی">
+            </div>
+            <h1 class="hero-name" id="config-hero-title">تولدت مبارک هاهایی</h1>
+            <div class="hero-date" id="config-birthday">۳۰ آبان</div>
+            <p class="hero-subtitle" id="config-hero-subtitle">بعضی روزها فقط یک تاریخ نیستند؛ یه بهانه‌ان برای اینکه چند لحظه بیشتر لبخند بزنیم.</p>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title">لحظات ماندگار</h2>
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </section>
+
+        <section class="memories-section">
+            <h2 class="section-title" style="margin-bottom: 30px; font-size: 1.8rem;">چند قاب از تو</h2>
+            <div class="memories-grid" id="memories-grid"></div>
+        </section>
+
+        <section class="special-section">
+            <h2 class="section-title" id="secret-trigger">امروز نوبت توئه که بدرخشی.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">یک حرف ناگفته برای این روز خاص...</p>
+            <button id="open-modal-btn" class="interactive-btn">یه چیز دیگه هم هست...</button>
+        </section>
+
+        <section class="final-reveal">
+            <p class="final-text-small">راستی...</p>
+            <h2 class="final-title">تولدت مبارک هاهایی.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">این آخرش نیست...</p>
+            <button id="bale-btn" class="interactive-btn">ادامه‌ی ماجرا</button>
+        </section>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" id="close-modal-btn">&times;</button>
+            <h2 class="modal-title" id="modal-title">پیام ویژه</h2>
+            <p class="modal-text" id="modal-text">متن تبریک...</p>
+            <button class="interactive-btn" onclick="document.getElementById('close-modal-btn').click()">بستن این قاب</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
