@@ -5,7 +5,7 @@ const siteConfig = {
     heroImage: "https://boodel.ir/wp-content/uploads/2026/11/IMG_20261029_231357.jpg",
     baleChannelLink: "https://ble.ir/join/4zTZELXaA4",
     music: "https://boodel.ir/wp-content/uploads/2026/10/Andy-Tavalod.mp3",
-    heroTitle: "تولدت مبارک هاهایی",
+    heroTitle: "تولدت مبارک هاهایی من",
     heroSubtitle: "بعضی روزها فقط یک تاریخ نیستند؛ یه بهانه‌ان برای اینکه چند لحظه بیشتر لبخند بزنیم.",
     specialMessageTitle: "امروز نوبت توئه که بدرخشی...",
     birthdayMessage: "هاهایی عزیز، امروز روزی است که دنیا با حضور تو قشنگ‌تر شد. امیدوارم تک‌تک لحظات امسال‌ت پر از نور، آرامش، لبخندهای از ته دل و رسیدن به قشنگ‌ترین رویاهایت باشد.",
