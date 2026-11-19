@@ -1,6 +1,6 @@
 const siteConfig = {
     name: "هاهایی",
-    shortName: "هاهایی",
+    shortName: "ملقب به رستا کوچولو",
     birthday: "۳۰ آبان",
     heroImage: "https://boodel.ir/wp-content/uploads/2026/11/IMG_20261029_231357.jpg",
     baleChannelLink: "https://ble.ir/join/4zTZELXaA4",
