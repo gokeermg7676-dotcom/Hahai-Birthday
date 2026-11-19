@@ -2,7 +2,7 @@ const siteConfig = {
     name: "هاهایی",
     shortName: "هاهایی",
     birthday: "۳۰ آبان",
-    heroImage: "assets/images/salaleh-main.jpg",
+    heroImage: "https://boodel.ir/wp-content/uploads/2026/11/IMG_20261029_231357.jpg",
     baleChannelLink: "https://ble.ir/join/4zTZELXaA4",
     music: "https://boodel.ir/wp-content/uploads/2026/10/Andy-Tavalod.mp3",
     heroTitle: "تولدت مبارک هاهایی",
