@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تولدت مبارک هاهایی</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button class="music-toggle" id="music-toggle" title="پخش / توقف موزیک">🎵</button>
+    <audio id="bg-audio" loop>
+        <source id="audio-source" src="" type="audio/mpeg">
+    </audio>
+
+    <div id="experience-overlay" class="experience-stage">
+        <div id="stage-1" class="stage-content">
+            <p class="stage-text" id="intro-line-1">یه لحظه وایسا عمر من...</p>
+            <p class="stage-text" id="intro-line-2">امروز شده قشنگ ترین روز پسرت...</p>
+            <div style="font-size: 1.9rem; color: var(--gold-accent); margin: 18px 0; font-weight: 400;" id="intro-birthday">۳۰ آبان</div>
+            <p class="stage-text" id="intro-line-3">به نام چشای قشنگ تر از جهانت.</p>
+            <p class="stage-text" id="timer-display" style="font-size: 1.6rem; font-weight: 400; color: var(--gold-accent); margin-top: 12px;">20</p>
+        </div>
+
+        <div id="stage-2" class="stage-content" style="display: none;">
+            <h1 class="stage-title-glow" id="config-name">هاهایی</h1>
+            <p class="stage-text" id="prize-title"></p>
+            <p class="stage-text" id="prize-text" style="font-size: 0.95rem; color: var(--text-muted);"></p>
+            <div id="enter-btn-slot" style="margin-top: 18px;"></div>
+        </div>
+    </div>
+
+    <div id="main-website" class="main-website">
+        <section class="hero-section">
+            <div class="hero-image-wrapper">
+                <img id="hero-img" src="" alt="هاهایی">
+            </div>
+            <h1 class="hero-name" id="config-hero-title">تولدت مبارک هاهایی</h1>
+            <div class="hero-date" id="config-birthday">۳۰ آبان</div>
+            <p class="hero-subtitle" id="config-hero-subtitle">بعضی روزها فقط یک تاریخ نیستند؛ یه بهانه‌ان برای اینکه چند لحظه بیشتر لبخند بزنیم.</p>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title" id="gallery-title">کم نگاه کن دلت نره یوقت</h2>
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </section>
+
+        <section class="memories-section">
+            <h2 class="section-title" id="memories-title">حرف اول کلمات زردو بزار کنار هم</h2>
+            <div class="memories-grid" id="memories-grid"></div>
+        </section>
+
+        <section class="special-section">
+            <h2 class="section-title" id="secret-trigger">امروز نوبت توئه که بدرخشی.</h2>
+            <p id="secret-subtext" style="color: var(--text-muted); font-weight: 300; margin-bottom: 26px;">دخملم یه چیزی نوشتم برا اون چشای خوشگلت...</p>
+            <button id="open-modal-btn" class="interactive-btn">یه چیز دیگه هم هست...</button>
+        </section>
+
+        <section class="final-reveal">
+            <p class="final-text-small" id="final-small-text">راستی...</p>
+            <h2 class="final-title" id="final-title">تولد زهرا آذره.</h2>
+            <p id="final-subtext" style="color: var(--text-muted); font-weight: 300; margin-bottom: 26px;">این آخرش نیستاااا...</p>
+            <button id="bale-btn" class="interactive-btn">ادامه‌ی ماجرا</button>
+        </section>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" id="close-modal-btn">&times;</button>
+            <h2 class="modal-title" id="modal-title">پیام ویژه</h2>
+            <p class="modal-text" id="modal-text">متن تبریک...</p>
+            <button id="modal-close-action" class="interactive-btn">بستن این قاب</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        (function () {
+            if (typeof siteConfig === "undefined") return;
+            const $ = (id) => document.getElementById(id);
+
+            if (siteConfig.music) {
+                $("audio-source").src = siteConfig.music;
+                $("bg-audio").load();
+            }
+            if (siteConfig.heroImage) $("hero-img").src = siteConfig.heroImage;
+            if (siteConfig.name) $("config-name").textContent = siteConfig.name;
+            if (siteConfig.heroTitle) $("config-hero-title").textContent = siteConfig.heroTitle;
+            if (siteConfig.birthday) {
+                $("config-birthday").textContent = siteConfig.birthday;
+                $("intro-birthday").textContent = siteConfig.birthday;
+            }
+            if (siteConfig.heroSubtitle) $("config-hero-subtitle").textContent = siteConfig.heroSubtitle;
+
+            const intro = siteConfig.intro || {};
+            if (intro.line1) $("intro-line-1").textContent = intro.line1;
+            if (intro.line2) $("intro-line-2").textContent = intro.line2;
+            if (intro.line3) $("intro-line-3").textContent = intro.line3;
+
+            const texts = siteConfig.texts || {};
+            if (texts.galleryTitle) $("gallery-title").textContent = texts.galleryTitle;
+            if (texts.memoriesTitle) $("memories-title").textContent = texts.memoriesTitle;
+            if (siteConfig.specialMessageTitle) {
+                $("secret-trigger").textContent = siteConfig.specialMessageTitle;
+                $("modal-title").textContent = siteConfig.specialMessageTitle;
+            }
+            if (texts.secretSubtext) $("secret-subtext").textContent = texts.secretSubtext;
+            if (texts.openModalText) $("open-modal-btn").textContent = texts.openModalText;
+            if (texts.finalSmallText) $("final-small-text").textContent = texts.finalSmallText;
+            if (texts.finalTitle) $("final-title").textContent = texts.finalTitle;
+            if (texts.finalSubtext) $("final-subtext").textContent = texts.finalSubtext;
+            if (texts.baleButtonText) $("bale-btn").textContent = texts.baleButtonText;
+            if (texts.closeModalText) $("modal-close-action").textContent = texts.closeModalText;
+            if (siteConfig.birthdayMessage) $("modal-text").textContent = siteConfig.birthdayMessage;
+
+            // ساخت کارت‌های بخش «لحظات ماندگار»
+            const galleryGrid = $("gallery-grid");
+            if (galleryGrid && Array.isArray(siteConfig.gallery)) {
+                galleryGrid.innerHTML = siteConfig.gallery.map((item) => `
+                    <div class="gallery-item">
+                        <div class="gallery-photo-box">
+                            <img src="${item.image}" alt="${item.caption}" onload="this.nextElementSibling.style.display='none';" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="photo-placeholder">
+                                <span>🖼</span>
+                                <span>${item.caption}</span>
+                            </div>
+                        </div>
+                        <p class="gallery-caption">${item.caption}</p>
+                    </div>
+                `).join("");
+            }
+
+            // ساخت کارت‌های بخش «چند قاب از تو» و رفتن به بخش عکس هنگام کلیک
+            const memoriesGrid = $("memories-grid");
+            const gallerySection = document.querySelector(".gallery-section");
+            const galleryItems = galleryGrid ? Array.from(galleryGrid.querySelectorAll(".gallery-item")) : [];
+
+            if (memoriesGrid && Array.isArray(siteConfig.memories)) {
+                memoriesGrid.innerHTML = siteConfig.memories.map((mem, idx) => `
+                    <div class="memory-card" style="cursor: pointer;" data-gallery-index="${typeof mem.galleryIndex === "number" ? mem.galleryIndex : idx}">
+                        <h3>${mem.title}</h3>
+                        <p>${mem.text}</p>
+                    </div>
+                `).join("");
+
+                memoriesGrid.querySelectorAll(".memory-card").forEach((card) => {
+                    card.addEventListener("click", () => {
+                        const targetIndex = Number(card.getAttribute("data-gallery-index"));
+                        const targetItem = galleryItems[targetIndex] || galleryItems[0];
+
+                        if (targetItem) {
+                            targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+                            galleryItems.forEach((el) => { el.style.outline = ""; });
+                            targetItem.style.outline = "2px solid var(--gold-accent, #f3c68f)";
+                            setTimeout(() => { targetItem.style.outline = ""; }, 1800);
+                        } else if (gallerySection) {
+                            gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                    });
+                });
+            }
+
+            // پخش کاغذ رنگی هنگام پایان تایمر
+            function dropConfetti(count = 75) {
+                const colors = ["#ff5c93", "#ffd166", "#06d6a0", "#4ea8de", "#c77dff"];
+                for (let i = 0; i < count; i++) {
+                    const piece = document.createElement("div");
+                    piece.className = "confetti-piece";
+                    piece.style.left = Math.random() * 100 + "vw";
+                    piece.style.backgroundColor = colors[i % colors.length];
+                    piece.style.animationDuration = (2.2 + Math.random() * 2.2) + "s";
+                    piece.style.animationDelay = (Math.random() * 0.5) + "s";
+                    document.body.appendChild(piece);
+                    setTimeout(() => piece.remove(), 5000);
+                }
+            }
+
+            // تایمر ۲۰ ثانیه‌ای؛ دکمه ورود فقط بعد از پایان تایمر ظاهر می‌شود
+            let left = typeof intro.durationSeconds === "number" ? intro.durationSeconds : 20;
+            $("timer-display").textContent = left;
+
+            const timer = setInterval(() => {
+                left--;
+                if (left <= 0) {
+                    clearInterval(timer);
+                    $("timer-display").textContent = "0";
+                    $("stage-1").style.display = "none";
+                    $("stage-2").style.display = "block";
+                    $("prize-title").textContent = intro.prizeTitle || "تبریک! برنده جایزه ویژه شدی";
+                    $("prize-text").textContent = intro.prizeText || "";
+                    dropConfetti(75);
+
+                    $("enter-btn-slot").innerHTML = `<button id="enter-world-btn" class="interactive-btn">${intro.enterButtonText || "ورود به دنیای اصلی"}</button>`;
+                    $("enter-world-btn").addEventListener("click", async () => {
+                        $("experience-overlay").classList.add("hidden");
+                        $("main-website").classList.add("visible");
+                        if (intro.autoPlayMusic !== false && siteConfig.music) {
+                            try { await $("bg-audio").play(); } catch (_) {}
+                        }
+                    });
+                } else {
+                    $("timer-display").textContent = left;
+                }
+            }, 1000);
+
+            $("modal-close-action").addEventListener("click", () => $("close-modal-btn").click());
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
